@@ -1,0 +1,46 @@
+import java.util.Scanner;
+
+public class Validacion1 {
+
+    public static void main(String[] args) {
+        // Declaración de variables para los intentos
+        byte intentoMaximo = 3;
+        byte intentos;
+
+        Scanner numeros = new Scanner(System.in);
+
+        System.out.println("Se le pide que de dos números para sumar ");
+
+        // Inicializamos num1 y num2 fuera del ciclo para que sean visibles fuera del mismo
+        byte num1 = 0;
+        byte num2 = 0;
+
+        // Ciclo repetitivo con for
+        for (intentos = 1; intentos <= intentoMaximo; intentos++) {
+            // Pedir valores
+            System.out.println("De un número entre el 10 y el 20");
+            num1 = numeros.nextByte();
+
+            System.out.println("De un número entre el 20 y 40");
+            num2 = numeros.nextByte(); 
+
+            // Validar si los números están en el rango correcto
+            if ((num1 >= 10 && num1 <= 20) && (num2 >= 20 && num2 <= 40)) {
+                break; // Salir del ciclo si los números son válidos
+            } else {
+                System.out.println("Los números ingresados no están en el rango correcto.");
+                System.out.println("Intentos restantes: " + (intentoMaximo - intentos));
+            }
+        }
+
+        // Validar si se agotaron los intentos
+        if (intentos > intentoMaximo) {
+            System.out.println("Se han agotado todos los intentos.");
+        } else { // Si es verdadero, imprimir resultado
+            int resultadoSuma = num1 + num2;
+            System.out.println("El resultado de la suma es: " + resultadoSuma);
+        }
+
+        numeros.close();
+    }
+}
