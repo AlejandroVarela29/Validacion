@@ -1,0 +1,41 @@
+import java.util.Scanner;
+public class Validacion2{
+
+    public static void main(String args[]){
+
+        Scanner numeros = new Scanner(System.in);
+
+        //Se inicializan las variables para los intentos 
+        byte intentos = 1, intentoMaximo = 3;
+
+        System.out.println("Se le pediran dos numeros para sumar ");
+
+        //se decalran las variables y se inicializan 
+        byte num1=0 , num2=0;
+
+        while(intentos<=intentoMaximo){
+
+            System.out.println("Cual es el primer numero? (Debe estar entre 10 y 20)");
+            num1 = numeros.nextByte();
+
+            System.out.println("Cual es el segundo numero? (debe estar entre 20 y 40)");
+            num2 = numeros.nextByte();
+
+            if( num1<=10  && num1>=20 && num2<=20 && num2>=40 ){
+                break;
+            }else {
+                System.out.println("Los valores ingresados no son los correctos ");
+                System.out.println("Intentelo nueva mente, intentos restantes: " + (intentoMaximo -  intentos));
+            }
+            ++intentos;
+        }
+
+        if(intentos==intentoMaximo){
+            System.out.println("No hay mas intentos");
+        }else{
+            int resultadoSuma = num1 + num2 ;
+            System.out.printf("%d",resultadoSuma);
+        }
+        numeros.close();
+    }
+}
